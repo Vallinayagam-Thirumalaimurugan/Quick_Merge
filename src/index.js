@@ -1,4 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MainApp from './container/MainApp/MainApp';
 
-ReactDOM.render(<div>Hi valli</div>, document.getElementById('main'));
+ZOHODESK.extension.onload().then((App) => {
+  ReactDOM.render(<MainApp />, document.getElementById('main'));
+});

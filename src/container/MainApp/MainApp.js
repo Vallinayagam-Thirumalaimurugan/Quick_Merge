@@ -7,13 +7,17 @@ export default class MainApp extends React.Component {
     this.state = {
       page : "initial"
     }
-    this.onChange = this.onChange.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
   }
-  onChange() {
-    this.setState({page : "final"});
+  onPageChange() {
+    let {page} = this.state;
+    if(page == 'initial') {
+      this.setState({page : "final"});
+    } else {
+      this.setState({page : 'initial'});
+    }
   }
   componentDidMount() {
-      debugger;
       ZOHODESK.get('portal.id').then((response) => {
         this.setState({page : "final"});
         console.log('the response is :',response);
