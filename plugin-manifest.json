@@ -1,0 +1,30 @@
+{
+  "locale": [
+    "en"
+  ],
+  "service": "DESK",
+  "storage": false,
+  "type": "personal",
+  "whiteListedDomains": [],
+  "modules": {
+    "widgets": [
+      {
+        "location": "desk.ticket.detail.rightpanel",
+        "url": "/app/widget.html",
+        "name": "Desk Extension",
+        "logo": "/app/img/logo.png",
+        "icon": "/app/img/icon.png"
+      },
+      {
+        "location" : "desk.topband",
+        "url" : "/app/widget.html",
+        "name": "Desk Extension",
+        "logo": "/app/img/logo.png",
+        "icon": "/app/img/icon.png"
+      }
+    ]
+  },
+  "connectors": [],
+  "config": [],
+  "moduleSupport": true
+}
