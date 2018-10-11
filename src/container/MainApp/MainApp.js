@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import IntroPage from '../../components/IntroPage/IntroPage';
 
 export default class MainApp extends React.Component {
   constructor(props) {
@@ -17,20 +18,13 @@ export default class MainApp extends React.Component {
       this.setState({page : 'initial'});
     }
   }
-  componentDidMount() {
-      ZOHODESK.get('portal.id').then((response) => {
-        this.setState({page : "final"});
-        console.log('the response is :',response);
-      }).catch((error) => {
-        console.log('the error response is :', error);
-      });
-  }
 
   render() {
-    let {page} = this.setState;
+    let {page} = this.state;
+    console.log('value of state', page);
     return (
       <div>
-        {page == 'initial' ? <div>Load the initial page</div> : <div>Load the final page</div>}
+        {page == 'initial' ? <IntroPage onChange={this.onPageChange} /> : <div>Load the final page</div>}
       </div>
     )
   }
