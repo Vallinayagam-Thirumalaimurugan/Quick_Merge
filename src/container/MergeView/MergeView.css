@@ -1,0 +1,70 @@
+.merge-table{
+  margin-top: 30px;
+  padding-top: 20px;
+  margin-bottom: 30px;
+  border: 0
+}
+.merge-grey-td-top-sel{
+  position: relative;
+  border-bottom: 1px solid #d3edf7;
+  border-radius: 3px 3px 0 0;
+  background: #eff9fb
+}
+.merge-grey-td-top{
+  position: relative;
+  border-bottom: 1px solid #eee;
+  border-radius: 3px 3px 0 0;
+  background: #f9f9f9
+}
+.subj-cont{
+  position: relative;
+  padding: 20px
+}
+.radio-w-border{
+  border: 1px solid #e1e1e1;
+  border-radius: 30px;
+  display: inline-block;
+  height: 30px;
+  text-align: center;
+  width: 30px;
+  position: absolute;
+  top: -50px;
+  left: 48%
+}
+.subj-text{
+  display: inline-block;
+  vertical-align: middle;
+  cursor: default !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  font-size: 17px;
+  font-family: 'ProximaNovaLight',Arial,Helvetica,sans-serif;
+  color: #666;
+  margin-bottom: 6px;
+  max-width: 300px
+}
+.mt8{
+  margin-top: 8px
+}
+.merge-sel-all{
+  background: #eefbfe;
+  left: 5px;
+  padding: 0 5px;
+  position: absolute;
+  bottom: -10px
+}
+.SLAlink_merge{
+  color: #00a3fe !important;
+  font: 12px 'ProximaNovaRegular',Arial,Helvetica,sans-serif;
+}
+.aligncent{
+  align: center
+}
+.pt20{
+  padding-top: 20px
+}
+.vishidden{
+  visibility: hidden
+}
