@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import IntroPage from '../../components/IntroPage/IntroPage';
+import MergePage from '../MergePage/MergePage';
 
 export default class MainApp extends React.Component {
   constructor(props) {
@@ -21,10 +22,9 @@ export default class MainApp extends React.Component {
 
   render() {
     let {page} = this.state;
-    console.log('value of state', page);
     return (
       <div>
-        {page == 'initial' ? <IntroPage onChange={this.onPageChange} /> : <div>Load the final page</div>}
+        {page == 'initial' ? <IntroPage onChange={this.onPageChange} /> : <MergePage />}
       </div>
     )
   }

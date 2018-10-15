@@ -5,7 +5,7 @@
   "service": "DESK",
   "storage": false,
   "type": "personal",
-  "whiteListedDomains": [],
+  "whiteListedDomains": ["https://desk.zoho.com"],
   "modules": {
     "widgets": [
       {
@@ -24,7 +24,7 @@
       }
     ]
   },
-  "connectors": [],
+  "connectors": [{"connectionLinkName":"mergeconnection","connectionName":"MergeConnection","serviceName":"zlabs_integration","userAccess":true,"isUserDefinedService":false,"scope":["Desk.tickets.ALL","Desk.tickets.READ","Desk.tickets.WRITE","Desk.tickets.UPDATE","Desk.tickets.CREATE","Desk.tickets.DELETE","Desk.contacts.READ","Desk.contacts.WRITE","Desk.contacts.UPDATE","Desk.contacts.CREATE","Desk.tasks.ALL","Desk.tasks.WRITE","Desk.tasks.READ","Desk.tasks.CREATE","Desk.tasks.UPDATE","Desk.tasks.DELETE","Desk.basic.READ","Desk.basic.CREATE","Desk.settings.ALL","Desk.settings.WRITE","Desk.settings.READ","Desk.settings.CREATE","Desk.settings.UPDATE","Desk.settings.DELETE","Desk.search.READ"]}],
   "config": [],
   "moduleSupport": true
 }
