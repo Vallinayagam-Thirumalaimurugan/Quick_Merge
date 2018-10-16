@@ -8,7 +8,8 @@ export default class MergePage extends React.Component {
     this.state = {
       searchString : '',
       isRequestSent : 0,
-      from : 0
+      from : 0,
+      searchResults : []
     }
     this.onSearchStringChange = this.onSearchStringChange.bind(this);
   }
@@ -25,11 +26,26 @@ export default class MergePage extends React.Component {
         args['_all'] = value;
         let type = 'GET';
         sendRequest(url, type, args).then((response) => {
-          let {isRequestSent} = this.state;
+          let {isRequestSent, from} = this.state;
           let {statusMessage} = response;
-          if(typeof statusMessage != 'undefined' && typeof statusMessage.data != 'undefined') {
-            
+          let searchResults = [];
+          if(typeof statusMessage != 'undefined' && typeof statusMessage.data != 'undefined' && typeof statusMessage.data == 'object' && statusMessage.data.length) {
+              statusMessage.data.map((ticketEntry) => {
+                let ticketObject = {};
+                ticketObject.subject = ticketEntry.subject;
+                ticketObject.ticketNumber = ticketEntry.ticketNumber;
+                let contactFirstName = ticketEntry.contact.firstName, contactLastName = ticketEntry.contact.lastName;
+                ticketObject.contactName = '';
+                if(typeof contactFirstName != 'undefined' && contactFirstName != null) {
+                  ticketObject.contactName = contactFirstName;
+                }
+                if(typeof contactLastName != 'undefined' && contactLastName != null) {
+                  ticketObject.contactName = `${ticketObject.contactName} ${contactLastName}`;
+                }
+                searchResults.push(ticketObject);
+              });
           }
+          this.setState({searchResults, isRequestSent : isRequestSent -1, from : from+20});
         });
       });
     } else {
@@ -38,31 +54,25 @@ export default class MergePage extends React.Component {
   }
 
   render() {
-    let {searchString, isRequestSent} = this.state;
+    let {searchString, isRequestSent, searchResults} = this.state;
     return (
       <div className="fullPage">
         <div className="mergeHeading">QUICK MERGE</div>
         <input value={searchString} className={`gap inputLine`} autoFocus={true} onChange={this.onSearchStringChange}  />
-        {isRequestSent ? (
-          <div className="loadOption">
-            <div className="loadBox">
-              <div className={`loadBall loadBall1`}>
-                <div className="innerBall"></div>
+        {searchResults.map((result) => {
+          return (
+            <div key={result.ticketNumber} className="resultHead">
+              <div className="resultContent">
+                <div className="contentHead">{`#${result.ticketNumber} ${result.subject}`}</div>
+                <div className="clboth"></div>
+                <div className="contactHead">
+                  <div className="contactContent">{`${result.contactName}`}</div>
+                </div>
               </div>
-              <div className={`loadBall loadBall2`}>
-                <div className="innerBall"></div>
-              </div>
-              <div className={`loadBall loadBall3`}>
-                <div className="innerBall"></div>
-              </div>
-              <div className={`loadBall loadBall4`}>
-                <div className="innerBall"></div>
-              </div>
-              <div className={`loadBall loadBall5`}>
-                <div className="innerBall"></div>
-              </div>
+              <div className="clboth"></div>
             </div>
-          </div>) : null}
+          )
+        })}
       </div>
     )
   }
